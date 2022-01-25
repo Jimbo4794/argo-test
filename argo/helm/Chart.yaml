@@ -1,0 +1,9 @@
+#
+# Copyright contributors to the Galasa project 
+#
+apiVersion: v2
+name: james-argo-test
+description: Test for Argo
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

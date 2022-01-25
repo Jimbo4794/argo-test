@@ -1,0 +1,26 @@
+#
+# Copyright contributors to the Galasa project 
+#
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: test-app
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - galasadev-cicsk8s.hursley.ibm.com
+    secretName: galasadev-cert
+  rules:
+  - host: galasadev-cicsk8s.hursley.ibm.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: test-app
+            port:
+              number: 80
+        path: /{{ .Values.tag }}/test-app
+        pathType: Prefix
